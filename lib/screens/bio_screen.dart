@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import '../widgets/BioContainer.dart';
 import '../widgets/biocard.dart';
 
 class BioScreen extends StatelessWidget {
@@ -71,32 +72,61 @@ class BioScreen extends StatelessWidget {
                 indent: 40,
                 endIndent: 40,
               ),
+              BioContainer(
+                leadingIcon: Icons.phone_android,
+                title: 'Mobile',
+                subTitle: '059-755-1506',
+                trailingIcon: Icons.phone,
+                onPressed: () {},
+                marginBottom: 10,
+              ),
               BioCard(
                 leadingIcon: Icons.email,
                 title: 'Email',
                 subTitle: 'email@flutter.com',
                 trailingIcon: Icons.send,
-                marginBottom: 10,
+                // marginBottom: 10,
                 onPressed: () {
                   print('Email');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('send Email'),
+                      duration: Duration(seconds: 3),
+                      backgroundColor: Colors.blue.shade300,
+                      onVisible: () => print('Snackbar is visible now!'),
+                      dismissDirection: DismissDirection.horizontal, //عشان نعمل ازاحة للسناك بار او الخروج منو
+                      elevation: 4,
+                      // padding: EdgeInsets.all(10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: EdgeInsetsDirectional.only(
+                          start: 20, end: 20, bottom: 10),
+                      behavior: SnackBarBehavior.floating,
+                      action: SnackBarAction(
+                        onPressed: () {},
+                        label: 'Dismiss',
+                        textColor: Colors.yellow.shade500,
+                      ),
+                    ),
+                  );
                 },
               ),
-              BioCard(
-                leadingIcon: Icons.phone_android,
-                title: 'Mobile',
-                subTitle: '970-059-755-1506',
-                trailingIcon: Icons.phone,
-                onPressed: () {
-                  print('Mobile');
-                },
-              ),
+              // BioCard(
+              //   leadingIcon: Icons.phone_android,
+              //   title: 'Mobile',
+              //   subTitle: '970-059-755-1506',
+              //   trailingIcon: Icons.phone,
+              //   onPressed: () {
+              //     print('Mobile');
+              //   },
+              // ),
               Spacer(),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Text('Fluttet 2022'),
               ),
               // SizedBox(height: 10,),
-
             ],
           ),
           // PositionedDirectional(
